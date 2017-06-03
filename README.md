@@ -10,8 +10,8 @@ Was macht es:
 - Message-Icons im Radar, Activity Stream, in Kontakt- und Besucherlisten: Nachricht schreiben, ohne das Profil zu öffnen
 - In jedem Profil: Direktlinks zu Clubs, Gästebuch und den Anzeigen des Users
 - In Diashows: Anzeige der ersten Zeichen des Bilddateinamens, um den Uploadzeitpunkt grob schätzen zu können
-- Kontaktliste: Auswahl ALLE, BEKANNT, FREUNDE usw. bleibt gespeichert
-- Bei Bedarf die alte Startseite aufrufen (Link CLASSIC)
+- Kontakte: Auswahl ALLE, BEKANNT, FREUNDE usw. bleibt gespeichert
+- Direktlink zur alten Startseite (CLASSIC)
 - Automatisch neu einloggen nach Trennung wegen Inaktivität
 - und noch ein paar Kleinigkeiten mehr ...
 
