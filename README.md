@@ -7,10 +7,10 @@ RomeoEnhancer ist ein Userscript für Firefox, Chrome, Safari und andere Browser
 
 Was macht es:
 - Clubforen und Besucherstatistik aus der Classic-Seite in der neuen Seite anzeigen (Links FOREN, STATISTIK)
-- Direkt die alte Startseite aufrufen (Link CLASSIC)
 - Message-Icons im Radar, Activity Stream, in Kontakt- und Besucherlisten: Nachricht schreiben, ohne das Profil zu öffnen
 - In jedem Profil: Direktlinks zu Clubs, Gästebuch und den Anzeigen des Users
 - In Diashows: Anzeige der ersten Zeichen des Bilddateinamens, um den Uploadzeitpunkt grob schätzen zu können 
+- Direkt die alte Startseite aufrufen (Link CLASSIC)
 - Automatisch neu einloggen nach Trennung wegen Inaktivität
 - und noch ein paar Kleinigkeiten mehr ...
 
@@ -28,25 +28,3 @@ Bestimmte Funktionen von RomeoEnhancer erfordern einen gewissenhaften Umgang. Di
 English version:
 
 #Romeo Emhancer
-Enhance the new Romeo site
-
-RomeoEnhancer is a userscript for Firefox, Chrome, Safari, and other browsers.
-
-What is it doing:
-- View club forums and visitor statistics from the Classic page in the new page (FORUMS, STATISTICS)
-- Directly call up the old start page (CLASSIC)
-- Message icons in radar, activity stream, contact and visitor lists: Write message without opening the profile
-- In each profile: direct links to clubs, guestbook and user's ads
-- In slideshows: Display the first characters of the file name to roughly estimate the upload time of the image
-- Automatic relogin after logout with long inactivity
-- and a few little things more ...
-
-How do I install it:
-1. Install Greasemonkey (Firefox) or Tampermonkey (Chrome, Safari and others) in the browser.
-2. Call this link: https: //xxx.user.js The script is installed automatically. You may have to confirm some questions.
-3. Open or reload the new Romeo page. The additional functions are active immediately.
-
-How do I remove it again:
-- Disable or delete the RomeoEnhancer script in Greasemonkey / Tampermonkey.
-
-Certain functions of RomeoEnhancer require conscientious handling. The responsibility lies solely with the respective user.
