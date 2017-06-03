@@ -1,5 +1,5 @@
 # RomeoEnhancer
-Enhance the new Romeo site
+Ergänzungen für die neue Romeo-Seite
 
 (English version below)
 
@@ -10,8 +10,8 @@ Was macht es:
 - Direkt die alte Startseite aufrufen (CLASSIC)
 - Message-Icons im Radar, Activity Stream, in Kontakt- und Besucherlisten: Nachricht schreiben, ohne das Profil zu öffnen
 - In jedem Profil: Direktlinks zu Clubs, Gästebuch und Anzeigen des Users
-- In Diashows: Anzeige der ersten Zeichen des Dateinamens, um den Uploadzeitpunkt des Bildes grob schätzen zu können 
-- Automatisches Relogin nach Logout bei längerer Inaktivität
+- In Diashows: Anzeige der ersten Zeichen des Bilddateinamens, um den Uploadzeitpunkt grob schätzen zu können 
+- Automatisch neu einloggen nach Trennung wegen Inaktivität
 - und noch ein paar Kleinigkeiten mehr ...
 
 Wie installiere ich es:
@@ -26,6 +26,9 @@ Bestimmte Funktionen von RomeoEnhancer erfordern einen gewissenhaften Umgang. Di
 
 -----------------------------
 English version:
+
+#Romeo Emhancer
+Enhance the new Romeo site
 
 RomeoEnhancer is a userscript for Firefox, Chrome, Safari, and other browsers.
 
