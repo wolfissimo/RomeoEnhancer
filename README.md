@@ -29,4 +29,4 @@ Bestimmte Funktionen von RomeoEnhancer erfordern einen gewissenhaften Umgang. Di
 -----------------------------
 English version:
 
-#Romeo Emhancer
+#RomeoEnhancer
