@@ -3,7 +3,7 @@ Ergänzungen für die neue Romeo-Seite
 
 (English version below)
 
-RomeoEnhancer ist ein Userscript für Chrome, Firefox, Safari und andere Browser.
+RomeoEnhancer ist ein Userscript für Chrome, Firefox, Safari und andere Browser mit Tampermonkey.
 
 Was macht es:
 - Clubforen und Besucherstatistik aus der Classic-Seite einblenden (Links FOREN, STATISTIK)
