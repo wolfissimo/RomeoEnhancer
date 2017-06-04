@@ -24,7 +24,7 @@ Wie installiere ich es:
 Wie entferne ich es wieder:
 - In Tampermonkey das Script RomeoEnhancer deaktivieren oder löschen.
 
-Bestimmte Funktionen von RomeoEnhancer erfordern einen gewissenhaften Umgang. Die Verantwortung liegt allein beim jeweiligen Nutzer.
+Bestimmte Funktionen von RomeoEnhancer erfordern einen verantwortungsvollen Umgang. Die Verantwortung liegt allein beim jeweiligen Nutzer.
 
 -----------------------------
 English version:
