@@ -6,7 +6,7 @@ Ergänzungen für die neue Romeo-Seite
 RomeoEnhancer ist ein Userscript für Chrome, Firefox, Safari und andere Browser.
 
 Was macht es:
-- Clubforen und Besucherstatistik der Classic-Seite anzeigen (Links FOREN, STATISTIK)
+- Clubforen und Besucherstatistik aus der Classic-Seite einblenden (Links FOREN, STATISTIK)
 - Message-Icons im Radar, Activity Stream, in Kontakt- und Besucherlisten: Nachricht schreiben, ohne das Profil zu öffnen
 - In jedem Profil: Direktlinks zu Clubs, Gästebuch und den Anzeigen des Users
 - In Diashows: Anzeige der ersten Zeichen des Dateinamens, um das Alter des Bildes (Zeitpunkt des Uploads) grob schätzen zu können
