@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         RomeoEnhancer
-// @version      0.88
+// @version      0.89
 // @author       braveguy (Romeo: braveguy / Romeo-Club: tbd.)
 // @downloadURL  //https://gist.github.com/raw/...
 // @description  Enhance the new Romeo site
@@ -42,8 +42,8 @@
 
 // ***** CSS *****
 GM_addStyle (
-	'a.re-icon {padding:0 8px; font-size:0.85em; color:#fffc}' +
-	'a:hover.re-icon {color:#66d7ffcc}'
+	'a.re-icon {padding:0 8px; font-size:0.85em; color:rgba(255,255,255,0.8)}' +
+	'a:hover.re-icon {color:rgba(102,215,255,0.8)}'
 );
 
 
@@ -310,6 +310,7 @@ function messageRadar (jNode) {
 		$(this).find('span.icon-save-contact').replaceWith(
 			'<a class="tile__badge icon icon-save-contact" title="Kontakt bearbeiten" href="/#/module/contacts/all/' + profileId + '"</a>'
 		);
+		// BMI ...
 	});
 }
 
@@ -382,7 +383,7 @@ function imgInfo (jNode) {
 		imgName = imgName.substring(imgName.indexOf('url(')+4, imgName.indexOf(')'));
 		var imgNameTxt = imgName.substr(imgName.lastIndexOf('/')+1, 5) + '...';
 		$('#swipe div.swipe__header div.js-counter').not(':has(a)').append(
-			'<a target="_blank" style="color:#fffc; font-size:0.85em" class="ml" href="' + imgName + '">' + imgNameTxt + '</a>'
+			'<a target="_blank" style="color:rgba(255,255,255,0.8); font-size:0.85em" class="ml" href="' + imgName + '">' + imgNameTxt + '</a>'
 		);
 	}
 }
@@ -397,9 +398,9 @@ function ratingInfo (jNode) {
 	imgNameMax = (imgNameMax ? imgNameMax : imgNameTxt);
 	if (imgNameTxt >= imgNameMax) {
 		localStorage.setItem('reRatingMax', imgNameTxt);
-		color = '#fffc';
+		color = 'rgba(255,255,255,0.8)';
 	} else {
-		color = '#f00c';
+		color = 'rgba(255,0,0,0.8)';
 	}
 	$('#picture-rating div.layer-header__title').append(
 		'<a target="_blank" style="color:' + color + '; font-size:0.85em" class="ml" href="' + imgName + '">' + imgNameTxt + '</a>'
@@ -427,7 +428,7 @@ waitForKeyElements ("#visitors ul.ui-navbar__actions", statisticsLink);
 waitForKeyElements ("#profile--forums section", loadForum);
 waitForKeyElements ("#profile--statistics section", loadStatistics);
 //waitForKeyElements ("#profile--history section", loadHistory);
-waitForKeyElements ("#messages span.txt-pill--mini", previewMessage);
+waitForKeyElements ("#messages div.listitem a.js-preview span.txt-bold--medium", previewMessage); // #messages span.txt-pill--mini
 waitForKeyElements ("#contacts span.plain-text-link", messageContacts);
 waitForKeyElements ("#visitors div.tile__info", messageVisitors);
 waitForKeyElements ("#profiles div.info__username, #profiles a.listresult", messageRadar);
@@ -440,4 +441,3 @@ waitForKeyElements ("#picture-rating img.picture-rating__image", ratingInfo);
 //waitForKeyElements (" ", insertBMI);
 //waitForKeyElements ("img.pswp__img", pictureSearch);
 waitForKeyElements ("div.layer--error", reLogin);
-
