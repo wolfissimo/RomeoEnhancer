@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         RomeoEnhancer
-// @version      0.89
+// @version      0.91
 // @author       braveguy (Romeo: braveguy / Romeo-Club: tbd.)
 // @downloadURL  //https://gist.github.com/raw/...
 // @description  Enhance the new Romeo site
@@ -13,27 +13,46 @@
 /*- The @grant directive is needed to work around a design change
     introduced in GM 1.0.   It restores the sandbox.
 */
-// @copyright    braveguy 12.10.2016 / 04.06.2017
+// @copyright    braveguy 12.10.2016 / 08.06.2017
 // ==/UserScript==
 
 
 /**
+ * Copyright(c) braveguy (Romeo: braveguy / Romeo-Club: tbd.)
+ *
+ * Änderungen oder die Wiederverwendung von Code von RomeoEnhancer
+ * erfordern meine ausdrückliche Zustimmung. Es ist nicht gestattet,
+ * geänderte Versionen von RomeoEnhancer zu veröffentlichen.
+ *
+ * Das Skript wurde mit Tampermonkey in aktuellen Versionen von Safari, Chrome
+ * und Firefox getestet. Dennoch geschieht die Benutzung auf eigenes Risiko.
+ *
+ * ** Datenschutz **
+ * RomeoEnhancer enthält keinerlei Code, um Nutzer zu identifizieren
+ * oder Daten auszuspähen. Es besteht keinerlei geschäftliches Interesse.
+ *
+ * Die aktuelle Version von RomeoEnhancer ist verfügbar unter:
+ * (tbd.)
+ *
+ *
+ * ****** English version *****
+ *
  * Copyright(c) by braveguy (Romeo: braveguy / Romeo-Club: tbd.)
  *
  * Modifications and/or reuse of RomeoEnhancer code require my explicit consent.
  * You are NOT allowed to publish any changed version of RomeoEnhancer!
  *
- * All code has been tested with a recent Safari, Firefox, and Chrome browser.
- * However, the use of this script is at your own risk.
+ * All code has been tested with Tampermonkey in a recent Safari, Chrome,
+ * and Firefox browser. However, the use of this script is at your own risk.
  *
  * ** Privacy **
  * RomeoEnhancer does NOT and never will include any code to identify you
- * or spy on your data. There is no commercial interest, no backdoors,
- * no line of code intended to harm you and/or your privacy.
+ * or spy on your data. There is no commercial interest.
  *
- * The latest version of RomeoEnhancer is always available on:
+ * The latest version of RomeoEnhancer is available on:
  * (tbd.)
- */
+
+*/
 
 
 // ***** Not used:
@@ -241,20 +260,24 @@ function loadStatistics (jNode) {
 }
 
 
-// ***** Preview unread message in title tag *****
+// ***** Preview unread messages in title tag *****
 function previewMessage (jNode) {
-	var profileId, msgCount, jsonParam, thisSpan, msgText;
+	var profileId, msgCount, jsonParam, thisSpan;
+	var msgText = '';
 	$('#messages div.listitem a.js-preview span.txt-bold--medium').not('.hasTitle').each(function(){
-		$(this).addClass('hasTitle');
+		//$(this).addClass('hasTitle');
 		profileId = $(this).parent().parent().attr('href').match(/\d{3,}/);
-		//msgCount = parseInt($(this).find('span.txt-pill--mini').text());
-		msgCount = 1;
-		jsonParam = 'lang=de&length=' + msgCount + '&filter%5Bfolders%5D%5B%5D=RECEIVED&filter%5Bpartner_id%5D=' + profileId;
-		//thisSpan = $(this).find('span.js-preview-text');
+		msgCount = parseInt($(this).parent().find('span.txt-pill--mini').text());
+		//msgCount = 1;
 		thisSpan = $(this);
 		console.info(profileId, msgCount, thisSpan);
+		jsonParam = 'lang=de&length=' + msgCount + '&filter%5Bfolders%5D%5B%5D=RECEIVED&filter%5Bpartner_id%5D=' + profileId;
+		//thisSpan = $(this).find('span.js-preview-text');
 		$.get('/api/v4/messages?' + jsonParam).done(function (data) {
-			msgText = data.items[0].text;
+			for (var i = msgCount-1; i >= 0; i--) {
+				msgText = msgText + '\r' + data.items[i].text+ '\r';
+			}
+			console.info(msgCount, msgText);
 			$(thisSpan).attr('title', msgText);
 		});
 	});
@@ -311,6 +334,24 @@ function messageRadar (jNode) {
 			'<a class="tile__badge icon icon-save-contact" title="Kontakt bearbeiten" href="/#/module/contacts/all/' + profileId + '"</a>'
 		);
 		// BMI ...
+/*		var stats = new Array($(this).find('.stat-bar__item, .list-stat-bar__item').text());
+		console.info(stats[0]);
+/*		var bmiPos;
+		$(this).find('.stat-bar__item, .list-stat-bar__item').each(function(i) {
+			stats[i] = $(this).text();
+			console.info(stats[i]);
+			bmiPos = (stats[i].match(/kg/)) ? i : 0;
+		});
+		console.info(stats[bmiPos], bmiPos);
+/*		//calcBMI(stats);
+		var weight = parseInt($(this).find('.stat-bar__item, .list-stat-bar__item').text());
+		var height = parseInt($(this).find('.stat-bar__item, .list-stat-bar__item').text());
+		//var weight = parseInt($(this).find('.stat-bar__item, .list-stat-bar__item').text().match(/kg/));
+		//var height = parseInt($(this).find('.stat-bar__item, .list-stat-bar__item').text().match(/cm/));
+		console.info (height + 'cm, ' +  weight + 'kg');
+		//BMI = calcBMI (height, weight);
+		BMI = '00';
+		//$(this).find('stat-bar__item, list-stat-bar__item')[bmiPos].text(weight + 'kg  (' + BMI + ')'); */
 	});
 }
 
@@ -378,12 +419,11 @@ function insertBMI (jNode) {
 function imgInfo (jNode) {
 	var imgName;
 	var eq = ($('div.swipe__element').length == 1) ? 0 : 1;
-	imgName = $('div.swipe__element:eq(' + eq + ') div.picture__area').attr('style');
+	imgName = $('div.swipe__element:eq(' + eq + ') img.picture__image').attr('src');
 	if (imgName) {
-		imgName = imgName.substring(imgName.indexOf('url(')+4, imgName.indexOf(')'));
 		var imgNameTxt = imgName.substr(imgName.lastIndexOf('/')+1, 5) + '...';
 		$('#swipe div.swipe__header div.js-counter').not(':has(a)').append(
-			'<a target="_blank" style="color:rgba(255,255,255,0.8); font-size:0.85em" class="ml" href="' + imgName + '">' + imgNameTxt + '</a>'
+			'<a target="_blank" style="color:rgba(255,255,255,0.5); font-size:0.85em" class="ml" href="' + imgName + '">' + imgNameTxt + '</a>'
 		);
 	}
 }
@@ -398,7 +438,7 @@ function ratingInfo (jNode) {
 	imgNameMax = (imgNameMax ? imgNameMax : imgNameTxt);
 	if (imgNameTxt >= imgNameMax) {
 		localStorage.setItem('reRatingMax', imgNameTxt);
-		color = 'rgba(255,255,255,0.8)';
+		color = 'rgba(255,255,255,0.5)';
 	} else {
 		color = 'rgba(255,0,0,0.8)';
 	}
@@ -422,13 +462,13 @@ function reLogin (jNode) {
 
 
 waitForKeyElements ("#contacts-menu, #trigger-region div div, a.contacts__search-close", keepContacts);
-waitForKeyElements ("li.js-bookmarks li.is-selected", bookmarkTitle);
+waitForKeyElements ("li.js-bookmarks li.is-selected, header.site-header h1", bookmarkTitle);
 waitForKeyElements ("ul.search-nav__vers-list", forumsLink);
 waitForKeyElements ("#visitors ul.ui-navbar__actions", statisticsLink);
 waitForKeyElements ("#profile--forums section", loadForum);
 waitForKeyElements ("#profile--statistics section", loadStatistics);
 //waitForKeyElements ("#profile--history section", loadHistory);
-waitForKeyElements ("#messages div.listitem a.js-preview span.txt-bold--medium", previewMessage); // #messages span.txt-pill--mini
+waitForKeyElements ("#messages span.txt-pill--mini", previewMessage); // #messages div.listitem a.js-preview span.txt-bold--medium
 waitForKeyElements ("#contacts span.plain-text-link", messageContacts);
 waitForKeyElements ("#visitors div.tile__info", messageVisitors);
 waitForKeyElements ("#profiles div.info__username, #profiles a.listresult", messageRadar);
