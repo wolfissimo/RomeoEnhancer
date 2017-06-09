@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         RomeoEnhancer
-// @version      0.91
+// @version      0.92
 // @author       braveguy (Romeo: braveguy / Romeo-Club: tbd.)
 // @downloadURL  //https://gist.github.com/raw/...
 // @description  Enhance the new Romeo site
@@ -438,6 +438,8 @@ function ratingInfo (jNode) {
 	imgNameMax = (imgNameMax ? imgNameMax : imgNameTxt);
 	if (imgNameTxt >= imgNameMax) {
 		localStorage.setItem('reRatingMax', imgNameTxt);
+	}
+	if (imgNameTxt + 1 >= imgNameMax) {
 		color = 'rgba(255,255,255,0.5)';
 	} else {
 		color = 'rgba(255,0,0,0.8)';
