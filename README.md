@@ -31,7 +31,7 @@ Bestimmte Funktionen von RomeoEnhancer erfordern einen verantwortungsvollen Umga
 -----------------------------
 English version:
 
-#RomeoEnhancer
+# RomeoEnhancer
 Additions for the new Romeo site
 
 RomeoEnhancer is a userscript for Chrome, Firefox, Safari, and other browsers with Tampermonkey.
