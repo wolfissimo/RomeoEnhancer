@@ -32,3 +32,29 @@ Bestimmte Funktionen von RomeoEnhancer erfordern einen verantwortungsvollen Umga
 English version:
 
 #RomeoEnhancer
+Additions for the new Romeo site
+
+RomeoEnhancer is a userscript for Chrome, Firefox, Safari, and other browsers with Tampermonkey.
+
+What is it doing:
+- Show club forums and visitor statistics from the Classic page (Links FORUMS, STATISTICS)
+- More overview in the ActivityStream: system messages in italics
+- Message icons in radar, activity stream, in contact and visitor lists: Write message without opening the profile
+- In each profile: direct links to clubs, guestbook and the user's ads
+- In slideshows: Display the first characters of the file name to roughly estimate the age of the image (time of the upload)
+- Contacts: Select ALL, KNOWN, FRIENDS, etc. will be saved
+- direct link to the old homepage (CLASSIC)
+- Automatically re-login after disconnection due to inactivity
+- and a few little things more ...
+
+How do I install it:
+1. Install the Tampermonkey extension in the browser. With Greasemonkey (Firefox) it is currently not working properly.
+2. Call this link:
+https://github.com/wolfissimo/RomeoEnhancer/raw/master/romeoenhancer.user.js
+The script is installed automatically. There may be some requests to confirm.
+3. Open or reload the new Romeo page. The additional functions are immediately active.
+
+How do I remove it again:
+- Disable or delete the RomeoEnhancer script in Tampermonkey.
+
+Certain functions of RomeoEnhancer require a responsible approach. The responsibility lies solely with the respective user.
