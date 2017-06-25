@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         RomeoEnhancer
-// @version      0.92
-// @author       braveguy (Romeo: braveguy / Romeo-Club: tbd.)
-// @downloadURL  //https://gist.github.com/raw/...
+// @version      0.93
+// @author       braveguy (Romeo: braveguy / Romeo-Club: RomeoEnhancer)
+// @downloadURL  https://github.com/wolfissimo/RomeoEnhancer/raw/master/romeoenhancer.user.js
 // @description  Enhance the new Romeo site
 // @include      https://www.planetromeo.com/*
 // @include      https://m.planetromeo.com/*
@@ -13,12 +13,12 @@
 /*- The @grant directive is needed to work around a design change
     introduced in GM 1.0.   It restores the sandbox.
 */
-// @copyright    braveguy 12.10.2016 / 08.06.2017
+// @copyright    braveguy 12.10.2016 / 25.06.2017
 // ==/UserScript==
 
 
 /**
- * Copyright(c) braveguy (Romeo: braveguy / Romeo-Club: tbd.)
+ * Copyright(c) braveguy (Romeo: braveguy / Romeo-Club: RomeoEnhancer)
  *
  * Änderungen oder die Wiederverwendung von Code von RomeoEnhancer
  * erfordern meine ausdrückliche Zustimmung. Es ist nicht gestattet,
@@ -37,7 +37,7 @@
  *
  * ****** English version *****
  *
- * Copyright(c) by braveguy (Romeo: braveguy / Romeo-Club: tbd.)
+ * Copyright(c) by braveguy (Romeo: braveguy / Romeo-Club: RomeoEnhancer)
  *
  * Modifications and/or reuse of RomeoEnhancer code require my explicit consent.
  * You are NOT allowed to publish any changed version of RomeoEnhancer!
@@ -263,9 +263,8 @@ function loadStatistics (jNode) {
 // ***** Preview unread messages in title tag *****
 function previewMessage (jNode) {
 	var profileId, msgCount, jsonParam, thisSpan;
-	var msgText = '';
 	$('#messages div.listitem a.js-preview span.txt-bold--medium').not('.hasTitle').each(function(){
-		//$(this).addClass('hasTitle');
+		$(this).addClass('hasTitle');
 		profileId = $(this).parent().parent().attr('href').match(/\d{3,}/);
 		msgCount = parseInt($(this).parent().find('span.txt-pill--mini').text());
 		//msgCount = 1;
@@ -274,6 +273,7 @@ function previewMessage (jNode) {
 		jsonParam = 'lang=de&length=' + msgCount + '&filter%5Bfolders%5D%5B%5D=RECEIVED&filter%5Bpartner_id%5D=' + profileId;
 		//thisSpan = $(this).find('span.js-preview-text');
 		$.get('/api/v4/messages?' + jsonParam).done(function (data) {
+			var msgText = '';
 			for (var i = msgCount-1; i >= 0; i--) {
 				msgText = msgText + '\r' + data.items[i].text+ '\r';
 			}
@@ -281,17 +281,6 @@ function previewMessage (jNode) {
 			$(thisSpan).attr('title', msgText);
 		});
 	});
-}
-
-
-// ***** Display classic message history in a layer *****
-function loadHistory (jNode) {
-	var profileId;
-	// ... calculate profileId ...
-	var frameH = $('#profile--history section').height() + 'px';
-	$('#profile--history section').replaceWith(
-		'<iframe style="border:0; height:' + frameH + '" src="https://classic.planetromeo.com/msg/history.php?uid=' + profileId + '"></iframe>'
-	);
 }
 
 
@@ -310,8 +299,8 @@ function messageContacts (jNode) {
 // ***** Add message bubbles to visitor list entries *****
 function messageVisitors (jNode) {
 	var profileId;
-	$('#visitors div.tile').each(function() {
-		profileId = $(this).find('a').attr('href').match(/\d{3,}/);
+	$('#visitors a.tile__link, #visitors a.listresult').each(function() {
+		profileId = $(this).attr('href').match(/\d{3,}/);
 		$(this).find('div.info').not(':has(a)').append(
 			'<a class="icon icon-chat re-icon" title="Messages" href="/#/module/messages/' + profileId + '"></a>'
 		);
@@ -469,7 +458,6 @@ waitForKeyElements ("ul.search-nav__vers-list", forumsLink);
 waitForKeyElements ("#visitors ul.ui-navbar__actions", statisticsLink);
 waitForKeyElements ("#profile--forums section", loadForum);
 waitForKeyElements ("#profile--statistics section", loadStatistics);
-//waitForKeyElements ("#profile--history section", loadHistory);
 waitForKeyElements ("#messages span.txt-pill--mini", previewMessage); // #messages div.listitem a.js-preview span.txt-bold--medium
 waitForKeyElements ("#contacts span.plain-text-link", messageContacts);
 waitForKeyElements ("#visitors div.tile__info", messageVisitors);
@@ -479,7 +467,4 @@ waitForKeyElements ("div.is-profile-loaded", linksProfile);
 waitForKeyElements ("div.profile__container--error", linksError);
 waitForKeyElements ("#swipe div.swipe__element", imgInfo);
 waitForKeyElements ("#picture-rating img.picture-rating__image", ratingInfo);
-//waitForKeyElements (" ", linksContacts);
-//waitForKeyElements (" ", insertBMI);
-//waitForKeyElements ("img.pswp__img", pictureSearch);
 waitForKeyElements ("div.layer--error", reLogin);
