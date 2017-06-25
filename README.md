@@ -18,7 +18,9 @@ Was macht es:
 
 Wie installiere ich es:
 1. Im Browser die Erweiterung Tampermonkey installieren. Mit Greasemonkey (Firefox) läuft es derzeit nicht richtig.
-2. Diesen Link aufrufen: https://xxx.user.js Das Script installiert sich automatisch. Eventuell sind einige Nachfragen zu bestätigen.
+2. Diesen Link aufrufen: 
+https://github.com/wolfissimo/RomeoEnhancer/raw/master/romeoenhancer.user.js 
+Das Script installiert sich automatisch. Eventuell sind einige Nachfragen zu bestätigen.
 3. Die neue Romeo-Seite öffnen oder neu laden. Die Zusatzfunktionen sind sofort aktiv.
 
 Wie entferne ich es wieder:
