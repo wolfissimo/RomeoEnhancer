@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         RomeoEnhancer
-// @version      0.93
+// @version      0.94
 // @author       braveguy (Romeo: braveguy / Romeo-Club: RomeoEnhancer)
-// @downloadURL  https://github.com/wolfissimo/RomeoEnhancer/raw/master/romeoenhancer.user.js
+// @downloadURL  https://greasyfork.org/scripts/31282-romeoenhancer/code/RomeoEnhancer.user.js
 // @description  Enhance the new Romeo site
 // @include      https://www.planetromeo.com/*
 // @include      https://m.planetromeo.com/*
@@ -14,6 +14,7 @@
     introduced in GM 1.0.   It restores the sandbox.
 */
 // @copyright    braveguy 12.10.2016 / 25.06.2017
+// @namespace    https://greasyfork.org/users/139428
 // ==/UserScript==
 
 
@@ -32,7 +33,7 @@
  * oder Daten auszuspähen. Es besteht keinerlei geschäftliches Interesse.
  *
  * Die aktuelle Version von RomeoEnhancer ist verfügbar unter:
- * (tbd.)
+ * https://greasyfork.org/scripts/31282-romeoenhancer/code/RomeoEnhancer.user.js
  *
  *
  * ****** English version *****
@@ -50,7 +51,7 @@
  * or spy on your data. There is no commercial interest.
  *
  * The latest version of RomeoEnhancer is available on:
- * (tbd.)
+ * https://greasyfork.org/scripts/31282-romeoenhancer/code/RomeoEnhancer.user.js
 
 */
 
